@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<conio.h>
 #include<stdlib.h>
 struct Node
 {
@@ -61,15 +60,17 @@ void delfrombeg()
 }
 void delfromend()
 {
-    struct Node *t;
+    struct Node *t,*p;
+    t=start;
     if(start!=NULL)
     {
         while(t->next->next!=NULL)
         {
             t=t->next;
         }
-        free(t->next);
+        p=t->next;
         t->next=NULL;
+        free(p);
     }
     else
     {
@@ -92,6 +93,7 @@ void insatmid(int pos,int n)
 void delfrommid(int pos)
 {
     struct Node *t,*p;
+    t=start;
     if(start!=NULL)
     {
         for(int i=0;i<pos-1;i++)
